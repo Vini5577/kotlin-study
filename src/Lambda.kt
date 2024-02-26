@@ -1,0 +1,43 @@
+val upperCaseStrin2: (String) -> String = { string -> string.uppercase()}
+
+fun toSeconds(time: String): (Int) -> Int = when (time) {
+    "hour" -> { value -> value * 60 * 60}
+    "minute" -> { value -> value * 60}
+    "second" -> { value -> value }
+    else -> { value -> value }
+}
+
+fun main() {
+
+    println({ string: String -> string.uppercase()} ("hello"))
+
+    val upperCaseString = { string: String -> string.uppercase()}
+    println(upperCaseString("hello"))
+
+    val numbers = listOf(1, -2, 3, -4, 5, -6)
+    val positives = numbers.filter { x -> x > 0 }
+    val negatives  = numbers.filter { x -> x < 0 }
+
+    println(positives)
+    println(negatives)
+
+    val doubled = numbers.map { x -> x * 2 }
+    val tripled = numbers.map { x -> x * 3 }
+
+    println(doubled)
+    println(tripled)
+
+    println(upperCaseStrin2("hello"))
+
+    val timeInMinutes = listOf(2 , 10, 15, 1)
+    val min2sec = toSeconds("minute")
+    val totalTimeInSeconds = timeInMinutes.map(min2sec).sum()
+
+    println("Total time is $totalTimeInSeconds")
+
+    println({ string: String -> string.uppercase() } ("hello"))
+
+    println(listOf(1, 2, 3).fold(0, { x, item -> x + item}))
+
+    println(listOf(1, 2, 3).fold(0) {x, item -> x + item})
+}
